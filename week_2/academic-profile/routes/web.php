@@ -17,13 +17,13 @@ Route::prefix('dashboard')
         Route::get('/agent/{tema?}', function (string $tema = 'General Assistant Agent') {
             return view('agent', ['tema' => $tema]);
         })->name('agent');
-
-        Route::get('/hitung-ipk/{ip1}/{ip2}', function (float $ip1, float $ip2) {
-            $rata = ($ip1 + $ip2) / 2;
-            return view('kalkulator', compact('ip1', 'ip2', 'rata'));
-        })->name('kalkulator')
-          ->where(['ip1' => '[0-9.]+', 'ip2' => '[0-9.]+']);
     });
+
+Route::get('/hitung-ipk/{ip1}/{ip2}', function (float $ip1, float $ip2) {
+    $rata = ($ip1 + $ip2) / 2;
+    return view('kalkulator', compact('ip1', 'ip2', 'rata'));
+    })->name('kalkulator')
+      ->where(['ip1' => '[0-9.]+', 'ip2' => '[0-9.]+']);
 
 Route::fallback(function () {
     return response()->view('notfound', [], 404);
