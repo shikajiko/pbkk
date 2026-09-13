@@ -24,3 +24,7 @@ Route::prefix('dashboard')
         })->name('kalkulator')
           ->where(['ip1' => '[0-9.]+', 'ip2' => '[0-9.]+']);
     });
+
+Route::fallback(function () {
+    return response()->view('notfound', [], 404);
+});
